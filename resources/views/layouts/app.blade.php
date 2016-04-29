@@ -39,7 +39,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/catalogue') }}">
+                <a class="navbar-brand" href="{{ url('/ecommerce/catalogue') }}">
                     E-Commerce Site
                 </a>
             </div>
@@ -49,17 +49,17 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+                        <li><a href="{{ url('/ecommerce/login') }}">Login</a></li>
+                        <li><a href="{{ url('/ecommerce/register') }}">Register</a></li>
                     @else
-                        <li><a href="{{ url('/cart') }}"><i class="fa fa-btn fa-shopping-cart"></i>Cart</a></li>
+                        <li><a href="{{ url('/ecommerce/cart') }}"><i class="fa fa-btn fa-shopping-cart"></i>Cart</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/ecommerce/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif

@@ -11,22 +11,31 @@
 |
 */
 
-Route::auth();
-
 Route::get('/', function() {
-    return redirect()->route('catalogue.index');
+    return view('index');
 });
 
-Route::get('/home', 'HomeController@index');
+Route::get('/lightSwitch', function() {
+    return view('lightSwitch');
+});
 
-Route::get('/cart', ['as' => 'cart.index', 'uses' => 'CartController@index']);
+Route::group(['prefix' => 'ecommerce'], function() {
+    Route::auth();
 
-Route::post('/cart/{product}', ['as' => 'cart.store', 'uses' => 'CartController@store']);
+    Route::get('/', function() {
+       return redirect()->route('catalogue.index');
+    });
 
-Route::delete('/cart/{product}', ['as' => 'cart.remove', 'uses' => 'CartController@remove']);
+    Route::get('/cart', ['as' => 'cart.index', 'uses' => 'CartController@index']);
 
-Route::delete('/cart', ['as' => 'cart.destroy', 'uses' => 'CartController@destroy']);
+    Route::post('/cart/{product}', ['as' => 'cart.store', 'uses' => 'CartController@store']);
 
-Route::get('/catalogue', ['as' => 'catalogue.index', 'uses' => 'Catalogue@index']);
+    Route::delete('/cart/{product}', ['as' => 'cart.remove', 'uses' => 'CartController@remove']);
 
-Route::get('/catalogue/{product}', ['as' => 'catalogue.show', 'uses' => 'Catalogue@show']);
+    Route::delete('/cart', ['as' => 'cart.destroy', 'uses' => 'CartController@destroy']);
+
+    Route::get('/catalogue', ['as' => 'catalogue.index', 'uses' => 'Catalogue@index']);
+
+    Route::get('/catalogue/{product}', ['as' => 'catalogue.show', 'uses' => 'Catalogue@show']);
+});
+
